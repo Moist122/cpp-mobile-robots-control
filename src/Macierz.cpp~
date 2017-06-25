@@ -1,0 +1,29 @@
+#include "Macierz.hh"
+
+
+Macierz::Macierz(){
+  for(int i=0; i<2; i++)
+    for(int j=0; j<2; j++)
+      pola[i][j]=0;
+}
+
+Macierz::Macierz(double x1, double x2, double x3, double x4){
+  pola[0][0]=x1;
+  pola[0][1]=x2;
+  pola[1][0]=x3;
+  pola[1][1]=x4;
+}
+
+Wektor Macierz::operator *(Wektor wek) const {
+  Wektor W(wek[0]*pola[0][0]+wek[1]*pola[0][1],wek[0]*pola[1][0]+wek[1]*pola[1][1]);
+  return W;
+}
+
+std::ostream& operator << (std::ostream &Strm, const Macierz &Mac) {
+  for(int i;i<2;i++) {
+    for(int j;j<2;j++)
+      Strm<<"["<<Mac(i,j)<<"]";
+    Strm<<std::endl;
+  } //for i
+  return Strm;
+}

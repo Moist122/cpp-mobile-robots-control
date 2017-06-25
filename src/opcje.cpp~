@@ -1,0 +1,28 @@
+#include "opcje.hh"
+
+void obroc(Prostokat &Pr, float kat, int razy) {
+  int i, j;
+  double rad=kat*M_PI/180;
+  Macierz przeksztalcenie(cos(rad),-sin(rad),sin(rad),cos(rad));
+  for(i=0;i<razy;i++)
+    for(j=0;j<4;j++)
+      Pr(j)=przeksztalcenie*Pr(j);
+}
+
+void porownaj(const Prostokat &P) {
+  if((P[1]-P[0]).dl()==(P[3]-P[2]).dl()) cout<<"Dluzsze boki sa rowne"<<endl;
+  else                                   cout<<"Dluzsze boki nie sa rowne"<<endl;
+  if((P[3]-P[0]).dl()==(P[2]-P[1]).dl()) cout<<"Krotsze boki sa rowne"<<endl;
+  else                                   cout<<"Krotsze boki nie sa rowne"<<endl;
+}
+
+void przesun(Prostokat &P, const Wektor &W) {P(0)=P(0)+W;}
+
+void menu() {
+  cout<<"o - obrot prostokata o zadany kat"<<endl
+      <<"p - przesuniecie prostokata o zadany wektor"<<endl
+      <<"w - wyswietlenie wspolrzednych wierzcholkow"<<endl
+      <<"s - sprawdzenie dlugosci przeciwleglych bokow"<<endl
+      <<"m - wyswietl menu"<<endl
+      <<"k - koniec dzialania programu"<<endl;
+}

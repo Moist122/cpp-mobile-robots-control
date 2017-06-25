@@ -1,0 +1,18 @@
+#include "Rotacje.hh"
+
+Macierz MacierzPrzeksztalcen(double kat) {
+  double rad=kat*M_PI/180;
+  Macierz M(cos(rad),-sin(rad),sin(rad),cos(rad));
+  return M;
+}
+
+void obroc(Wektor &wek, double kat) {
+  wek=MacierzPrzeksztalcen(kat)*wek;
+}
+
+void obroc(Prostokat &Pr, double kat, int razy) {
+  int i, j;
+  for(i=0;i<razy;i++)
+    for(j=0;j<3;j++)
+      obroc(Pr(j),kat);
+}

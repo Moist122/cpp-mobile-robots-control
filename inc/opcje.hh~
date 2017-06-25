@@ -1,0 +1,18 @@
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+#include "Wektor.hh"
+#include "Macierz.hh"
+#include "Prostokat.hh"
+
+void obroc(Prostokat &Pr, float kat, int razy);
+
+void przesun(Prostokat &P, const Wektor &W);
+
+void porownaj(const Prostokat &P);
+
+void wyswietlWspolrzedne(const Prostokat Pr,ostream &Strm);
+
+void menu();

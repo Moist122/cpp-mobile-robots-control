@@ -1,0 +1,33 @@
+#include "Wektor.hh"
+
+Wektor::Wektor() {
+  x=0;
+  y=0;
+}
+
+Wektor::Wektor(double wsp1, double wsp2) {
+  x=wsp1;
+  y=wsp2;
+}
+
+Wektor Wektor::operator +(Wektor wek) const {
+  Wektor W(x+wek[0],y+wek[1]);
+  return W; 
+}
+
+Wektor Wektor::operator -(Wektor wek) const {
+  Wektor W(x-wek[0],y-wek[1]);
+  return W; 
+}
+
+std::ostream& operator << (std::ostream &Strm, const Wektor &W) {
+  return Strm<<"["<<W[0]<<","<<W[1]<<"]";
+}
+
+std::istream& operator >> (std::istream &Strm, Wektor &W) {
+  double wsp1, wsp2;
+  Strm>>wsp1>>wsp2;
+  W[0]=wsp1;
+  W[1]=wsp2;
+  return Strm;
+}

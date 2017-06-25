@@ -1,0 +1,23 @@
+#ifndef PUNKT_HH
+#define PUNKT_HH
+
+#include "Wektor.hh"
+#include <iostream>
+
+/*klasa opisująca punkt w dwuwymiarowym układzie współrzędnych*/
+class Punkt {
+  double wspolrzedne[2];
+public:
+  Punkt(); //konstruktor zerujący
+  Punkt(double wsp1,double wsp2); //konstrunktor inicjujący wartości
+  double x() const {return wspolrzedne[0];} //zwraca pierwszą współrzędną
+  double y() const {return wspolrzedne[1];} //zwraca drugą współrzędną
+  void operator +(Wektor wek); //zwraca punkt przesunięty o wektor
+};
+/*
+ *  wej: Punkt
+ *  wyj: wpółprzędne (x,y)
+ */
+std::ostream& operator << (std::ostream &Strm, const Punkt &P);
+
+#endif

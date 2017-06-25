@@ -1,0 +1,40 @@
+#ifndef MACIERZ_HH
+#define MACIERZ_HH
+
+
+#include <iostream>
+#include "Wektor.hh"
+
+
+/*
+ *  Klasa opisująca macierz 2x2
+ *  Pozwala mnożyć macierz przez wektor
+ */
+class Macierz {
+  float pola[2][2]; //liczby w macierzy
+  public:
+  Macierz(); //konstruktor zerujący pola
+  Macierz(float x1, float x2, float x3, float x4); //konstruktor zapełniający
+                                                       //pola macierzy danymi liczbami
+  ~Macierz();
+  float operator() (int wsp1, int wsp2) const {
+    return pola[wsp1][wsp2];
+  } //zwraca wartość z macierzy nie zmieniając macierzy
+  float& operator()(int wsp1, int wsp2) {
+    if(wsp1>=0&&wsp2>=0&&wsp1<2&&wsp2<2)return pola[wsp1][wsp2];
+    return 0;
+    //int ex=-1;
+    //throw std::ex;
+  } //zwraca wartość z macierzy jako referencję
+  Wektor operator *(Wektor wek) const; //mnoży macierz przez wektor
+};
+
+
+/*
+ * wej: ostream, Macierz
+ * wyj: macierz w postaci [a][b]
+ *                        [c][d]
+ */
+std::ostream& operator << (std::ostream &Strm, const Macierz &Mac);
+
+#endif

@@ -1,0 +1,38 @@
+#ifndef WEKTOR_HH
+#define WEKTOR_HH
+
+#include <iostream>
+#include <cmath>
+
+
+/*
+ *  Klasa opisująca wektor w 2D
+ *  
+ */
+class Wektor {
+  float x, y; //współrzędne
+  public:
+  Wektor();  //konstruktor zerujący
+  Wektor(float wsp1, float wsp2); //konstrunktor inicjujący wartości
+  float operator [](int n) const {return n==0 ? x:y;} //zwraca wybraną współrzędną
+                                                       //nie zmieniając wektora
+  float& operator [](int n) {return n==0 ? x:y;} //zwraca wybraną współrzędną jako referencję
+  Wektor operator +(Wektor wek) const;       //suma wektorów
+  Wektor operator -(Wektor wek) const;       //różnica wektorów
+  float dl() {return sqrt(x*x+y*y);}
+};
+
+
+/*
+ *  wej: Wektor
+ *  wyj: wpółprzędne [x,y]
+ */
+std::istream& operator >> (std::istream &Strm, Wektor &Wek);
+
+/*
+ *  wej: wspolrzedne
+ *  wyj: punkt o zadanych współrzędnych
+ */
+std::ostream& operator << (std::ostream &Strm, const Wektor &Wek);
+
+#endif

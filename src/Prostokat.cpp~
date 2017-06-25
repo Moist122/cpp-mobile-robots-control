@@ -1,0 +1,61 @@
+#include "Prostokat.hh"
+
+Prostokat::Prostokat() {
+  Wektor W;
+  P=W;
+  wek1=W;
+  wek2=W;
+  wek3=W;
+}
+
+Prostokat::Prostokat(Wektor x, Wektor w1, Wektor w3)
+{
+  P=x;
+  wek1=w1;
+  wek2=w1+w3;
+  wek3=w3;
+}
+
+Wektor Prostokat::operator [](int p) const {
+  switch(p) {
+  case 0: return P;
+  case 1: return P+wek1;
+  case 2: return P+wek2;
+  default: return P+wek3;
+  }
+}
+
+/*Wektor Prostokat::operator [](int p) {
+  switch(p) {
+  case 0: return P;
+  case 1: return P+wek1;
+  case 2: return P+wek2;
+  default: return P+wek3;
+  }
+  }*/
+
+Wektor& Prostokat::operator ()(int p) {
+  switch(p) {
+  case 0: return P;
+  case 1: return wek1;
+  case 2: return wek2;
+  default: return wek3;
+  }
+}
+
+ostream& operator << (ostream       &Strm, 
+                            const Prostokat    &Pr
+                          )
+{
+  cout << setw(16) << fixed << setprecision(10) << Pr[0][0]
+       << setw(16) << fixed << setprecision(10) << Pr[0][1] << endl;
+  cout << setw(16) << fixed << setprecision(10) << Pr[1][0]
+       << setw(16) << fixed << setprecision(10) << Pr[1][1] << endl;
+  cout << setw(16) << fixed << setprecision(10) << Pr[2][0]
+       << setw(16) << fixed << setprecision(10) << Pr[2][1] << endl;
+  cout << setw(16) << fixed << setprecision(10) << Pr[3][0]
+       << setw(16) << fixed << setprecision(10) << Pr[3][1] << endl;
+  return Strm;
+}
+
+

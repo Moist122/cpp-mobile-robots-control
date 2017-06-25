@@ -1,0 +1,20 @@
+#include "Punkt.hh"
+
+Punkt::Punkt() {
+  for(int i=0;i<2;i++)
+    wspolrzedne[i]=0;
+}
+
+Punkt::Punkt(double wsp1, double wsp2) {
+  wspolrzedne[0]=wsp1;
+  wspolrzedne[1]=wsp2;
+}
+
+/*Punkt::void operator +(Wektor wek) {
+
+}*/
+
+std::ostream& operator << (std::ostream &Strm, const Punkt &P) {
+  std::cout<<"("<<P.x()<<","<<P.y()<<")";
+  return Strm;
+}

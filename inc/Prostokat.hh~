@@ -1,0 +1,35 @@
+#ifndef PROSTOKAT_HH
+#define PROSTOKAT_HH
+
+#include <iostream>
+#include <iomanip>
+#include "Wektor.hh"
+
+using namespace std;
+
+/*
+ *  Klasa opisuje prostokąt jako wektor ozanczający punkt P i 3 wektory
+ *  łączące go z pozostałymi wierzchołkami prostokąta
+ */
+class Prostokat {
+  Wektor P;
+  Wektor wek1, wek2, wek3;
+public:
+  Prostokat(); //konstruktor zerujący
+  Prostokat(Wektor x, Wektor w1, Wektor w2); //konstruktor zadający punkt
+                                             //i 2 wektory tworzące prostokąt
+  Wektor operator [](int p) const;  //wyciąga współrzędne wierzchołka nr p prostokąta
+  Wektor& operator ()(int p); //wyciąga referencję do danego wektora tworzącego prostokąt
+};
+
+
+/*
+ * wej: ostream, prostokąt
+ * wyj: współrzędne kolejnych wierzchołków prostokąta
+ */
+std::ostream& operator << ( std::ostream       &Strm, 
+                            const Prostokat    &Pr
+                          );
+
+
+#endif
